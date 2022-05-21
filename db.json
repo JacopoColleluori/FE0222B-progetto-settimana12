@@ -5,6 +5,12 @@
       "password": "$2a$10$SmgrR2x18eeoJMFtk9N9FORmSTDG0ToOtqOS0Ik0jgiRWoAqe7sT2",
       "name": "nicola toledo",
       "id": 1
+    },
+    {
+      "email": "jacolle1999@gmail.com",
+      "password": "$2a$10$PKwQCBwRGOxnrxSJhocOlOD1Lk55opP9AiLVJfqrJ8mJmpwPuka0S",
+      "name": "jakky",
+      "id": 2
     }
   ],
   "favorites": [

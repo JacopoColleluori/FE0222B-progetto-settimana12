@@ -15,7 +15,6 @@ export class AuthService {
   private authBSubject = new BehaviorSubject<null | DataAuth>(null);
 
   userControl$ = this.authBSubject.asObservable();
-  isLoggedIn$ = this.userControl$.pipe(map((user) => !!user));
 
   jwtHelper = new JwtHelperService();
 
@@ -27,15 +26,17 @@ export class AuthService {
 
   login(data: { email: string; password: string }) {
     return this.http.post<DataAuth>(`${this.baseUrl}/login`, data).pipe(
-      tap((res) => {
-        console.log(res);
-      }),
       tap((val) => {
+        console.log(val);
         this.authBSubject.next(val);
-        localStorage.setItem('user', JSON.stringify(data));
+        localStorage.setItem('user', JSON.stringify(val));
       })
       // catchError(this.errors)
     );
+  }
+
+  signUp(data: { name: string; email: string; password: string }) {
+    return this.http.post(`${this.baseUrl}/register`, data);
   }
 
   logout() {
@@ -46,25 +47,27 @@ export class AuthService {
       clearTimeout(this.timeoutLogout);
     }
   }
-  restore(){
+  restore() {
     const user = localStorage.getItem('user');
-    if (!user){
-      return
+
+    if (!user) {
+      return;
     }
-    const userData:DataAuth= JSON.parse(user);
-    if(this.jwtHelper.isTokenExpired(userData.acessToken)){
-      return
+    const userData: DataAuth = JSON.parse(user);
+    console.log(user);
+    if (this.jwtHelper.isTokenExpired(userData.accessToken)) {
+      return;
     }
 
     this.authBSubject.next(userData);
-    this.autoLogout(userData)
+    this.autoLogout(userData);
   }
 
   private errors(error: any) {}
 
   autoLogout(data: DataAuth) {
     const expDate = this.jwtHelper.getTokenExpirationDate(
-      data.acessToken
+      data.accessToken
     ) as Date;
     const operationEx = expDate.getTime() - new Date().getTime();
     this.timeoutLogout = setTimeout(() => {

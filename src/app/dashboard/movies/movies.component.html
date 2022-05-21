@@ -1,1 +1,3 @@
-<p>movies works!</p>
+<div class="card bg-dark" style="width: 18rem" *ngFor="let m of movies">
+  <img [src]="'https://image.tmdb.org/t/p/w500'+ m.poster_path" class="card-img" alt="..." />
+</div>

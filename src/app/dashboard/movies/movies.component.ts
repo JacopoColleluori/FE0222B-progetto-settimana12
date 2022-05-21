@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Movie } from 'src/app/models/movie';
+import { MoviesService } from './movies.service';
 
 @Component({
   selector: 'app-movies',
@@ -6,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movies.component.scss']
 })
 export class MoviesComponent implements OnInit {
+  movies!:Movie[]|undefined;
+  sub!:Subscription;
+  constructor(private movieSRV:MoviesService) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
+ ngOnInit(){
+  this.sub=this.movieSRV.getMovies().subscribe(movies=>{
+    this.movies=movies;
+  })
   }
 
 }

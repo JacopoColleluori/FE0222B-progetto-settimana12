@@ -1,5 +1,5 @@
 export interface DataAuth {
-  acessToken:string,
+  accessToken:string,
   user:{
     email:string,
     id:number,
