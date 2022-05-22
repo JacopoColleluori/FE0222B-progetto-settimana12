@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError } from 'rxjs';
+import { BehaviorSubject, catchError, of, throwError } from 'rxjs';
 import { DataAuth } from '../models/dataauth';
 import { map, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { O_DIRECT } from 'constants';
 
 @Injectable({
   providedIn: 'root',
@@ -30,13 +31,18 @@ export class AuthService {
         console.log(val);
         this.authBSubject.next(val);
         localStorage.setItem('user', JSON.stringify(val));
+      }),
+      catchError(error=>{
+        alert("Credenziali non corrette")
+        return of(0);
       })
 
     );
   }
 
   signUp(data: { name: string; email: string; password: string }) {
-    return this.http.post(`${this.baseUrl}/register`, data);
+    return this.http.post(`${this.baseUrl}/register`, data),
+    throwError(() => alert("Riempire i campi correttamente"))
   }
 
   logout() {
