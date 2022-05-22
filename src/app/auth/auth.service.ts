@@ -31,7 +31,7 @@ export class AuthService {
         this.authBSubject.next(val);
         localStorage.setItem('user', JSON.stringify(val));
       })
-      // catchError(this.errors)
+
     );
   }
 
