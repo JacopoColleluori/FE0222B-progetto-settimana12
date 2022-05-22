@@ -1,4 +1,4 @@
-<div class="container d-flex flex-wrap">
+<div class="container d-flex flex-wrap justify-content-evenly">
   <div class="card bg-dark m-3" style="width: 30%" *ngFor="let m of moviesFav;let i = index">
     <div class="container" >
       <img
@@ -6,10 +6,10 @@
         class="card-img"
         min-height="600 rem"
         alt="..."
-
       />
     </div >
     <div class="card-body mt-5">
+      <p class="card-title text-light fs-4 pb-5 text-center">{{m.data.title}}</p>
       <div class="card-footer">
         <button
          [style.color]="m.favId ? 'green' : '' "

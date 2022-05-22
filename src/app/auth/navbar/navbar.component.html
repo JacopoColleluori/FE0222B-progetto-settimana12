@@ -1,30 +1,28 @@
-<!--Main Navigation-->
+
 <header>
-  <!-- Sidebar -->
+
   <nav
        id="sidebarMenu"
-       class="d-block sidebar bg-dark"
+       class="d-block sidebar bg-dark pb-4"
        >
     <div class="position-sticky">
 
         <a
-           class="fs-1 mt-4 list-group-item list-group-item-action py-2 ripple listSide"
+           class="fs-3 mt-4 list-group-item list-group-item-action py-2 ripple listSide text-center"
            aria-current="true"
            >
-          <i class="fas fa-tachometer-alt fa-fw me-3"></i
-            ><span [routerLink]="['/']">Movies</span>
+
+            <span [routerLink]="['/']">Movies</span>
         </a>
         <a
-           class="fs-1 mt-4 list-group-item list-group-item-action py-2 ripple listSide"
+           class="fs-3 mt-4 list-group-item list-group-item-action py-2 ripple listSide text-center"
            >
-           <i class="fas fa-tachometer-alt fa-fw me-3"></i
-            ><span [routerLink]="['/profile']">Profile</span>
+         <span [routerLink]="['/profile']">Profile</span>
         </a>
         <a (click)="logout()"
-           class="fs-1 mt-4 list-group-item list-group-item-action py-2 ripple listSide"
+           class="fs-3 mt-4 list-group-item list-group-item-action py-2 ripple listSide text-center mb-3"
            >
-           <i class="fas fa-tachometer-alt fa-fw me-3"></i
-            ><span>Logout</span>
+          <span>Logout</span>
         </a>
       </div>
 
@@ -32,12 +30,12 @@
 </header>
 
 
-<!--Main Navigation-->
 
-<!--Main layout-->
+
+<!--Main content-->
 <main style="margin-top: 58px">
   <div class="container pt-4">
     <ng-content></ng-content>
   </div>
 </main>
-<!--Main layout-->
+<!--Main content-->

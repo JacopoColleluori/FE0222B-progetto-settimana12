@@ -7,7 +7,8 @@ head{
 }
 @media (min-width: 991.98px) {
   main {
-    padding-left: 240px;
+    padding-left: 300px;
+
   }
 }
 
@@ -36,7 +37,9 @@ head{
 
 @media (max-width: 991.98px) {
   .sidebar {
+    display:block;
     width: 100%;
+    position: static;
   }
 }
 .sidebar .active {
